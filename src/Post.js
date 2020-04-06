@@ -4,10 +4,10 @@ import './App.scss';
 class Post extends React.Component {
     render(){
         return(
-            <div>
-                <img src="placeholder.jpg" alt="аватар"></img>
-                <div>
-                    <div>
+            <div className="post">
+                <div><img src="placeholder.jpg" alt="аватар" className="avatar"></img></div>
+                <div className="post-content">
+                    <div className="data">
                         <a href="#" className="user">Lorem Ipsum</a>
                         <span className="time">30 минут назад</span>
                         <div className="karma">
@@ -15,9 +15,9 @@ class Post extends React.Component {
                             <div>10</div>
                             <button className="minus">-</button>
                         </div>
-                        <button className="reply">Ответить</button>
+                        <div className="reply">Ответить</div>
                     </div>                    
-                    <span className="commText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie.</span>
+                    <p className="commText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie.</p>
                 </div>
             </div>
         )

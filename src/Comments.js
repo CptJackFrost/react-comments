@@ -11,13 +11,19 @@ class Comments extends React.Component {
                 </legend>
                 {/*}   <Post />  */}
                 <form>
-                    <label for="name">Имя:</label>
-                    <input type="text" name="name" id="name"></input>
-                    <label for="mail">E-mail:</label>
-                    <input type="text" name="mail" id="mail"></input>
-                    <label for="text">Текст комментария:</label>
-                    <textarea name="text" id="text"></textarea>
-                    <input type="submit" value="Добавить комментарий"></input>
+                    <div>
+                        <label for="name">Имя:</label>
+                        <input type="text" name="name" id="name"></input>
+                    </div>
+                    <div>
+                        <label for="mail">E-mail:</label>
+                        <input type="mail" name="mail" id="mail"></input>
+                    </div>
+                    <div>
+                        <label for="text">Текст комментария:</label>
+                        <textarea cols="70" rows="10" name="text" id="text"></textarea>
+                    </div>                    
+                    <input class="submit" type="submit" value="Добавить комментарий"></input>
                 </form>
             </fieldset>    
 

@@ -1,0 +1,96 @@
+$font: "serif";
+
+.Article {
+  .date {
+    color: #c5c5c5;
+  }
+}
+
+p, a {
+    font: { 
+      family: $font;
+      size: 1.1em;
+    }
+  }
+  
+.karma {
+    display: flex;
+    border: 1px solid black;
+    width: 150px;
+    background-color: lightgrey;
+    div {
+        text-align: center;
+        width: 50px;
+        border: {
+            left: 1px solid black;
+            right: 1px solid black;
+        }
+    }
+    button {
+      width: 50px;
+      background-color: lightgrey;
+      border: none;
+  }
+}
+
+.post {
+    margin: 10px;
+    display: flex;
+    .post-content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .avatar {
+        width: 100px;
+        height: 100px;
+        margin-right: 20px;
+    }
+    .data {
+        display: flex;
+        flex-wrap: row;
+        width: 100%;
+        height: 1.5em;
+        .time {
+            margin-left: 50px;
+            margin-right: 50px;
+            font-size: 1em;
+        }
+        .reply {
+            margin-left: auto;
+            margin-right: 20px;
+            text-decoration: underline;
+            color: blue;
+        }
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+
+    div, .submit {
+        margin-top: 10px;
+    }
+    
+    #text {
+        vertical-align: top;
+    }
+
+    label {
+        display: inline-block;
+        width: 150px;
+        margin-right: 50px;
+    }
+
+    .submit {
+        margin-left: 200px;
+        width: 180px;
+        height: 2em;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 2px;
+        font-weight: bold;
+    }
+}
