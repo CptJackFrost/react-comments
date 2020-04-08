@@ -1,10 +1,13 @@
 $font: "serif";
 
-.Article {
-  .date {
+.date {
     color: #c5c5c5;
+    .post & {
+        margin-left: 50px;
+        margin-right: 50px;
+        font-size: 0.9em;
+    }
   }
-}
 
 p, a {
     font: { 
@@ -33,6 +36,15 @@ p, a {
   }
 }
 
+.commText {
+    button {
+        border: none;
+        color: blue;
+        text-decoration: underline;
+        background: none;
+    }
+}
+
 .post {
     margin: 10px;
     display: flex;
@@ -51,11 +63,6 @@ p, a {
         flex-wrap: row;
         width: 100%;
         height: 1.5em;
-        .time {
-            margin-left: 50px;
-            margin-right: 50px;
-            font-size: 1em;
-        }
         .reply {
             margin-left: auto;
             margin-right: 20px;

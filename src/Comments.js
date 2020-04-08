@@ -2,6 +2,13 @@ import React, {Component} from 'react';
 import './App.scss';
 
 class Comments extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            
+        }
+    }
+
     render(){
         return(
             <div className="CommBlock">
@@ -17,7 +24,7 @@ class Comments extends React.Component {
                     </div>
                     <div>
                         <label for="mail">E-mail:</label>
-                        <input type="mail" name="mail" id="mail"></input>
+                        <input type="email" name="mail" id="mail"></input>
                     </div>
                     <div>
                         <label for="text">Текст комментария:</label>
