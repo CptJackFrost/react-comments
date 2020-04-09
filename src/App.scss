@@ -63,11 +63,14 @@ p, a {
         flex-wrap: row;
         width: 100%;
         height: 1.5em;
-        .reply {
-            margin-left: auto;
+        .reply, .user{
             margin-right: 20px;
             text-decoration: underline;
             color: blue;
+            cursor: pointer;
+        }
+        .reply {
+            margin-left: auto;
         }
     }
 }

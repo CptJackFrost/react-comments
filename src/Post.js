@@ -1,19 +1,62 @@
 import React, {Component} from 'react';
 import './App.scss';
 
+class Timer extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            seconds: (Date.parse(new Date()) - Date.parse(props.postDate))/1000
+        }
+    }
+
+    getTime() {
+        const time = this.state.seconds;
+        let date;
+        if (time < 3600){
+            date = `${Math.round(time / 60)} минут назад`;
+        } else if (time < 3600 * 24) {
+            date = `${Math.round(time / 3600)} часов назад`;
+        } else {
+            date = `${Math.round(time / (3600 * 24))} дней назад`;
+        }
+
+        return date;
+    }
+
+    tick() {
+        this.setState(state => ({
+            seconds: state.seconds + 1,
+            dateString: this.getTime()
+        }));
+    }
+    
+    componentDidMount() {
+        this.interval = setInterval(() => this.tick(), 1000);
+    }
+    
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }    
+
+    render(){
+        return(
+            <span className="date">{this.state.dateString}</span>
+        )
+    }
+}
+
 class Post extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            count: -0,
+            count: 0,
             visible: true
         }
     }
 
     changeKarma(i) {       
         const points = this.state.count + i;
-        //let visibility = this.state.visible;
-        if (points <= -10) {
+        if (points < -10) {
             this.setVisible(false);
         } else {
             this.setVisible(true);
@@ -21,7 +64,6 @@ class Post extends React.Component {
         this.setState((state)=>{
             return {
                 count: points,
-                //visible: visibility
             }
         })
     }
@@ -33,6 +75,7 @@ class Post extends React.Component {
             }
         })
     }
+
     
     render() {
         const count = this.state.count;
@@ -42,8 +85,8 @@ class Post extends React.Component {
                     <div><img src="placeholder.jpg" alt="аватар" className="avatar"></img></div>
                     <div className="post-content">
                         <div className="data">
-                            <a href="#" className="user">Lorem Ipsum</a>
-                            <span className="date">30 минут назад</span>
+                            <div className="user">Lorem Ipsum</div>
+                            <Timer postDate={this.props.postDate}/>
                             <div className="karma">
                                 <button className="plus" onClick={() => this.changeKarma(1)}>+</button>
                                 <div>{count}</div>
@@ -62,7 +105,7 @@ class Post extends React.Component {
                     <div><img src="placeholder.jpg" alt="аватар" className="avatar"></img></div>
                     <div className="post-content">
                         <div className="data">
-                            <a href="#" className="user">Lorem Ipsum</a>
+                            <div className="user">Lorem Ipsum</div>
                             <span className="date">30 минут назад</span>
                             <div className="karma">
                                 <button className="plus" onClick={() => this.changeKarma(1)}>+</button>

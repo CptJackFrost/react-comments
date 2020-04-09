@@ -2,15 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Article from './Article';
-import Comments from './Comments';
+import CommentForm from './Comments';
 import Post from './Post'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
     <Article />
-    <Post/>
-    <Comments />
+    <Post postDate="2020-04-08 20:00:00" />
+    <Post postDate="2020-04-09 20:00:00" />    
+    <CommentForm />
   </React.StrictMode>,
   document.getElementById('root')
 );

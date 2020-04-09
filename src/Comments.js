@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import './App.scss';
 
-class Comments extends React.Component {
+class CommentForm extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+        }
+        this.props = {
             
         }
     }
@@ -39,4 +41,4 @@ class Comments extends React.Component {
     }
 }
 
-export default Comments;
+export default CommentForm;
