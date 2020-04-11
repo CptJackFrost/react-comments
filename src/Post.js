@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.scss';
 
 class Timer extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            seconds: (Date.parse(new Date()) - Date.parse(props.postDate))/1000
+            seconds: (Date.parse(new Date()) - props.postDate)/1000
         }
     }
 
@@ -85,7 +85,7 @@ class Post extends React.Component {
                     <div><img src="placeholder.jpg" alt="аватар" className="avatar"></img></div>
                     <div className="post-content">
                         <div className="data">
-                            <div className="user">Lorem Ipsum</div>
+                            <div className="user">{this.props.user}</div>
                             <Timer postDate={this.props.postDate}/>
                             <div className="karma">
                                 <button className="plus" onClick={() => this.changeKarma(1)}>+</button>
@@ -94,7 +94,7 @@ class Post extends React.Component {
                             </div>
                             <div className="reply">Ответить</div>
                         </div>                    
-                        <p className="commText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie.</p>
+            <p className="commText">{this.props.text}</p>
                     </div>
                 </div>
             )
@@ -106,7 +106,7 @@ class Post extends React.Component {
                     <div className="post-content">
                         <div className="data">
                             <div className="user">Lorem Ipsum</div>
-                            <span className="date">30 минут назад</span>
+                            <Timer postDate={this.props.postDate}/>
                             <div className="karma">
                                 <button className="plus" onClick={() => this.changeKarma(1)}>+</button>
                                 <div>{count}</div>
