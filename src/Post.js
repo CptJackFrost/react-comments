@@ -105,7 +105,7 @@ class Post extends React.Component {
                     <div><img src="placeholder.jpg" alt="аватар" className="avatar"></img></div>
                     <div className="post-content">
                         <div className="data">
-                            <div className="user">Lorem Ipsum</div>
+                            <div className="user">{this.props.user}</div>
                             <Timer postDate={this.props.postDate}/>
                             <div className="karma">
                                 <button className="plus" onClick={() => this.changeKarma(1)}>+</button>
