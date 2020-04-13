@@ -1,7 +1,5 @@
 import React from 'react';
 import './App.scss';
-import Post from './Post';
-import CommentSection from './CommentSection';
 
 class CommentForm extends React.Component {
     constructor(props){
@@ -18,33 +16,16 @@ class CommentForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-
-
     render(){
-        return(
-            
-            <div className="CommBlock">
-            <Post 
-                postDate={Date.parse("2020-04-08 20:00:00")}
-                user="Lorem Ipsum"
-                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie." 
-            />
-            
-            <Post 
-                postDate={Date.parse("2020-04-09 20:00:00")}
-                user="Lorem Ipsum"
-                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie." 
-            />
-
-            <CommentSection items={this.state.items}/>
-
+        return(            
+            <div>
             <fieldset>
                 <legend>
                     Добавить комментарий
                 </legend>
                 <form onSubmit={this.handleSubmit}>
                     <div>
-                        <label for="name">Имя:</label>
+                        <label htmlFor="name">Имя:</label>
                         <input type="text"
                                name="name"
                                id="name"
@@ -52,7 +33,7 @@ class CommentForm extends React.Component {
                                value={this.state.nameInput}></input>
                     </div>
                     <div>
-                        <label for="mail">E-mail:</label>
+                        <label htmlFor="mail">E-mail:</label>
                         <input type="email" 
                                name="mail" 
                                id="mail"
@@ -60,7 +41,7 @@ class CommentForm extends React.Component {
                                value={this.state.mailInput}></input>
                     </div>
                     <div>
-                        <label for="text">Текст комментария:</label>
+                        <label htmlFor="text">Текст комментария:</label>
                         <textarea cols="70" 
                                   rows="10"
                                   name="text"
@@ -68,10 +49,9 @@ class CommentForm extends React.Component {
                                   onChange={this.handleChangeText}
                                   value={this.state.text}></textarea>
                     </div>                    
-                    <input class="submit" type="submit" value="Добавить комментарий"></input>
+                    <input className="submit" type="submit" value="Добавить комментарий"></input>
                 </form>
-            </fieldset>    
-
+            </fieldset>
             </div>
         )
     }
@@ -102,20 +82,19 @@ class CommentForm extends React.Component {
                 alert("Заполните все поля");
                 return;
         }
-        const newItem = {
-            date: Date.now(),
-            user: this.state.nameInput,
-            text: this.state.text
-        }
 
         this.setState(state => {
             return {
-                items: state.items.concat(newItem),
                 nameInput: '',
                 mailInput: '',
                 text: ''     
             }
         })
+
+
+        console.log("итемы: " + this.state.items);
+
+        this.props.updateData(this.state)
     }
 }
 

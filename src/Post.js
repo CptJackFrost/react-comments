@@ -96,6 +96,7 @@ class Post extends React.Component {
                         </div>                    
             <p className="commText">{this.props.text}</p>
                     </div>
+                    
                 </div>
             )
         }
@@ -112,7 +113,6 @@ class Post extends React.Component {
                                 <div>{count}</div>
                                 <button className="minus" onClick={() => this.changeKarma(-1)}>-</button>
                             </div>
-                            <div className="reply">Ответить</div>
                         </div>                    
                         <p className="commText">
                             <button onClick={() => this.setVisible(true)}>Развернуть комментарий</button>

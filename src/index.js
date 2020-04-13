@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Article from './Article';
-import CommentForm from './CommentForm';
+import CommentSection from './CommentSection'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
     <Article />    
-    <CommentForm />
+    <CommentSection />
   </React.StrictMode>,
   document.getElementById('root')
 );
