@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.scss';
+import CommentForm from './CommentForm';
 
 class Timer extends React.Component {
     constructor(props){
@@ -81,7 +82,7 @@ class Post extends React.Component {
         const count = this.state.count;
         if (this.state.visible === true) {
             return(
-                <div className="post">
+                <div className="wrapper">
                     <div><img src="placeholder.jpg" alt="аватар" className="avatar"></img></div>
                     <div className="post-content">
                         <div className="data">
@@ -92,17 +93,16 @@ class Post extends React.Component {
                                 <div>{count}</div>
                                 <button className="minus" onClick={() => this.changeKarma(-1)}>-</button>
                             </div>
-                            <div className="reply">Ответить</div>
+                            <button className="reply">Ответить</button>
                         </div>                    
-            <p className="commText">{this.props.text}</p>
+                        <p className="commText">{this.props.text}</p>
                     </div>
-                    
                 </div>
             )
         }
         else {
             return(
-                <div className="post">
+                <div className="wrapper">
                     <div><img src="placeholder.jpg" alt="аватар" className="avatar"></img></div>
                     <div className="post-content">
                         <div className="data">

@@ -47,11 +47,8 @@ p, a {
 
 .post {
     margin: 10px;
-    display: flex;
-    .post-content {
+    .wrapper {
         display: flex;
-        flex-direction: column;
-        width: 100%;
     }
     .avatar {
         width: 100px;
@@ -71,14 +68,14 @@ p, a {
         }
         .reply {
             margin-left: auto;
+            background: none;
+            border: none;
         }
     }
 }
 
-form {
-    display: flex;
-    flex-direction: column;
 
+form {
     div, .submit {
         margin-top: 10px;
     }
@@ -103,4 +100,8 @@ form {
         border-radius: 2px;
         font-weight: bold;
     }
+}
+
+.hidden {
+    display: none;
 }

@@ -8,7 +8,8 @@ class CommentForm extends React.Component {
             items: [],
             nameInput: '',
             mailInput: '',
-            text: ''          
+            text: '',
+            visibility: "hidden"
         }
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangeMail = this.handleChangeMail.bind(this);
@@ -16,9 +17,23 @@ class CommentForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    setVisible(){
+        this.setState(({visibility}) => {
+            return {
+                visibility: "visible"
+            }
+        })
+    }
+
+    componentDidMount(){
+        if (this.props.visible==="true"){
+            this.setVisible()
+        }
+    }
+
     render(){
         return(            
-            <div>
+            <div className={this.state.visibility}>
             <fieldset>
                 <legend>
                     Добавить комментарий
