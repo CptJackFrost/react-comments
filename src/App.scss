@@ -37,6 +37,7 @@ p, a {
 }
 
 .commText {
+    min-width: 1680px;
     button {
         border: none;
         color: blue;
@@ -58,7 +59,6 @@ p, a {
     .data {
         display: flex;
         flex-wrap: row;
-        width: 100%;
         height: 1.5em;
         .reply, .user{
             margin-right: 20px;

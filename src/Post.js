@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.scss';
-import CommentForm from './CommentForm';
 
 class Timer extends React.Component {
     constructor(props){
