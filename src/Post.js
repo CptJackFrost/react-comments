@@ -52,6 +52,12 @@ class Post extends React.Component {
             count: 0,
             visible: true
         }
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e){
+        e.preventDefault();
+        this.props.formBinder(this.props.index + 1);
     }
 
     changeKarma(i) {       
@@ -92,7 +98,7 @@ class Post extends React.Component {
                                 <div>{count}</div>
                                 <button className="minus" onClick={() => this.changeKarma(-1)}>-</button>
                             </div>
-                            <button className="reply">Ответить</button>
+                            <button className="reply" onClick={this.handleClick}>Ответить</button>
                         </div>                    
                         <p className="commText">{this.props.text}</p>
                     </div>
