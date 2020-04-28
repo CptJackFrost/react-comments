@@ -5,30 +5,15 @@ class CommentForm extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            items: [],
+            date: Date.now(),
             nameInput: '',
             mailInput: '',
             text: '',
-            visibility: "hidden"
         }
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangeMail = this.handleChangeMail.bind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    setVisible(){
-        this.setState(({visibility}) => {
-            return {
-                visibility: "visible"
-            }
-        })
-    }
-
-    componentDidMount(){
-        if (this.props.visible==="true"){
-            this.setVisible()
-        }
     }
 
     render(){
@@ -100,14 +85,12 @@ class CommentForm extends React.Component {
 
         this.setState(state => {
             return {
+                date: Date.now(),
                 nameInput: '',
                 mailInput: '',
                 text: ''     
             }
         })
-
-
-        console.log("итемы: " + this.state.items);
 
         this.props.updateData(this.state)
     }

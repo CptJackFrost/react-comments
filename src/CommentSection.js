@@ -34,7 +34,7 @@ class CommentSection extends React.Component {
 
     updateItems = (formData) => {
         const newItem = {
-            date: Date.now(),
+            date: formData.date,
             user: formData.nameInput,
             text: formData.text 
         }
@@ -46,12 +46,18 @@ class CommentSection extends React.Component {
                 formPosition: Infinity
             }
         })
+
+        console.log("итемы: ")
+        this.state.items.forEach(element => {
+            console.log(element)
+        });
     }
     
     render(){
         const sectionArray = this.state.items.map(item => (
             <div key={this.state.items.indexOf(item)} className="post">
                 <Post
+                key={this.state.items.indexOf(item)} 
                 index={this.state.items.indexOf(item)}
                 postDate={item.date} 
                 user={item.user}  
@@ -60,7 +66,7 @@ class CommentSection extends React.Component {
             </div>                                  
         ))
 
-        sectionArray.splice(this.state.formPosition, 0, <CommentForm key="form" visible="true" updateData={this.updateItems}/>)
+        sectionArray.splice(this.state.formPosition, 0, <CommentForm key="form" updateData={this.updateItems}/>)
         
         return(
             <div>                

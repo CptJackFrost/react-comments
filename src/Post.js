@@ -5,12 +5,12 @@ class Timer extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            seconds: (Date.parse(new Date()) - props.postDate)/1000
+            seconds: 0
         }
     }
 
     getTime() {
-        const time = this.state.seconds;
+        const time = (Date.now() - this.props.postDate)/1000;
         let date;
         if (time < 3600){
             date = `${Math.round(time / 60)} минут назад`;
