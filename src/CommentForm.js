@@ -88,11 +88,14 @@ class CommentForm extends React.Component {
                 date: Date.now(),
                 nameInput: '',
                 mailInput: '',
-                text: ''     
+                text: '',
             }
         })
+        
+        const data = JSON.parse(JSON.stringify(this.state))
+        data["level"] = this.props.level
 
-        this.props.updateData(this.state)
+        this.props.updateData(data)
     }
 }
 

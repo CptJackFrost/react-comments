@@ -10,21 +10,36 @@ class CommentSection extends React.Component {
         this.state = {
             items: [
             {
+                level: 0,
                 date: Date.parse("2020-04-08 20:00:00"),
                 user: "Lorem Ipsum",
                 text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie." 
             },
             {
+                level: 0,
                 date: Date.parse("2020-04-09 20:00:00"),
                 user: "Lorem Ipsum",
                 text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper nulla a quam commodo, id scelerisque tellus molestie." 
             }],
-            formPosition: Infinity
+            formPosition: Infinity,
+            depth: 0
         }
-        this.setFormPosition = this.setFormPosition.bind(this)
+        this.setForm = this.setForm.bind(this)
     }
 
-    setFormPosition(index) {
+    setForm(index, level) {
+        let depthLevel
+        if (level === 3){
+            depthLevel = 3
+        } else {
+            depthLevel = level + 1
+        }
+        this.setState(({depth})=>{
+            return {
+                depth: depthLevel
+            }
+        })
+
         this.setState(({formPosition}) => {
             return {
                 formPosition: index
@@ -36,7 +51,8 @@ class CommentSection extends React.Component {
         const newItem = {
             date: formData.date,
             user: formData.nameInput,
-            text: formData.text 
+            text: formData.text,
+            level: formData.level
         }
         const updatedItems = this.state.items
         updatedItems.splice(this.state.formPosition, 0, newItem)
@@ -57,19 +73,20 @@ class CommentSection extends React.Component {
         const sectionArray = this.state.items.map(item => (
             <div key={this.state.items.indexOf(item)} className="post">
                 <Post
+                level={item.level}
                 key={this.state.items.indexOf(item)} 
                 index={this.state.items.indexOf(item)}
                 postDate={item.date} 
                 user={item.user}  
                 text={item.text}
-                formBinder={this.setFormPosition}/>                        
+                formBinder={this.setForm}/>                        
             </div>                                  
         ))
 
-        sectionArray.splice(this.state.formPosition, 0, <CommentForm key="form" updateData={this.updateItems}/>)
+        sectionArray.splice(this.state.formPosition, 0, <CommentForm key="form" level={this.state.depth} updateData={this.updateItems}/>)
         
         return(
-            <div>                
+            <div className="commSection">                
                 {sectionArray}
             </div>
         )

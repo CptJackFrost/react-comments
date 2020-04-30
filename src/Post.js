@@ -57,7 +57,7 @@ class Post extends React.Component {
 
     handleClick(e){
         e.preventDefault();
-        this.props.formBinder(this.props.index + 1);
+        this.props.formBinder(this.props.index + 1, this.props.level);
     }
 
     changeKarma(i) {       
@@ -85,9 +85,10 @@ class Post extends React.Component {
     
     render() {
         const count = this.state.count;
+        const wrapperClass = `wrapper level-${this.props.level}`;
         if (this.state.visible === true) {
             return(
-                <div className="wrapper">
+                <div className={wrapperClass}>
                     <div><img src="placeholder.jpg" alt="аватар" className="avatar"></img></div>
                     <div className="post-content">
                         <div className="data">

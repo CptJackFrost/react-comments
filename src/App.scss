@@ -21,6 +21,7 @@ p, a {
     border: 1px solid black;
     width: 150px;
     background-color: lightgrey;
+    margin-right: auto;
     div {
         text-align: center;
         width: 50px;
@@ -45,10 +46,26 @@ p, a {
     }
 }
 
+.commSection {
+    text-align: left;
+}
+
 .post {
     margin: 10px;
+    .post-content {
+        flex: 1;
+    }
     .wrapper {
         display: flex;
+        &.level-1{
+            margin-left: 100px;
+        }
+        &.level-2{
+            margin-left: 200px;
+        }
+        &.level-3{
+            margin-left: 300px;
+        }
     }
     .avatar {
         width: 100px;
