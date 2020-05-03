@@ -2,7 +2,7 @@ import React from 'react';
 import './App.scss';
 import Post from './Post'
 import CommentForm from './CommentForm';
-
+import {Remarkable} from 'remarkable'
 class CommentSection extends React.Component {
 
     constructor(props){
@@ -51,7 +51,7 @@ class CommentSection extends React.Component {
         const newItem = {
             date: formData.date,
             user: formData.nameInput,
-            text: formData.text,
+            text: new Remarkable().render(formData.text),
             level: formData.level
         }
         const updatedItems = this.state.items

@@ -101,7 +101,7 @@ class Post extends React.Component {
                             </div>
                             <button className="reply" onClick={this.handleClick}>Ответить</button>
                         </div>                    
-                        <p className="commText">{this.props.text}</p>
+                        <p className="commText" dangerouslySetInnerHTML={{__html: this.props.text}}></p>
                     </div>
                 </div>
             )
